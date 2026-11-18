@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanatan Dharma | Spiritual Journey</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Noto+Serif+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-light">
+    <header class="site-header" id="top">
+        <div class="brand">
+            <div class="brand-icon" aria-hidden="true"><img src="images/logoo.png" alt="" srcset=""></div>
+        </div>
+        <button class="menu-toggle" aria-label="Open navigation">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#puja">Puja Details</a>
+            <a href="#temples">Temples & Pilgrimages</a>
+            <a href="#books">Sanatani Books</a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact Us</a>
+            <a href="#about">About</a>
+        </nav>
+        <div class="header-actions">
+            <label class="search" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" placeholder="Search mantras, temples, books...">
+            </label>
+            <button class="theme-toggle" type="button" aria-pressed="false">
+                <i class="fa-solid fa-moon"></i>
+                <span>Dark Mode</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="contact" id="contact">
+            <div class="section-heading">
+                <h2>Connect with Us</h2>
+                <p>Reach out for temple bookings, puja guidance, or spiritual counseling.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Support & Guidance</h3>
+                    <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fa-solid fa-envelope"></i> blessings@sanatandharma.org</p>
+                    <p><i class="fa-solid fa-location-dot"></i> Spiritual Care Center, Varanasi, India</p>
+                    <div class="contact-cta">
+                        <button class="btn primary" type="button">Book a Consultation</button>
+                        <button class="btn ghost" type="button">Request Puja Kit</button>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" name="name" placeholder="Your name" required>
+                    <input type="email" name="email" placeholder="Email address" required>
+                    <input type="text" name="topic" placeholder="Puja / Temple / Books / Events">
+                    <textarea name="message" rows="5" placeholder="Share your query..." required></textarea>
+                    <button class="btn outline" type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div>
+                <h4>Quick Links</h4>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+            <div>
+                <h4>Spiritual Resources</h4>
+                <a href="#puja">Puja Details</a>
+                <a href="#temples">Temple Visits</a>
+                <a href="#books">Sacred Books</a>
+                <a href="#news">Festival News</a>
+            </div>
+            <div>
+                <h4>Language</h4>
+                <select aria-label="Select language">
+                    <option>English</option>
+                    <option>Hindi</option>
+                    <option>Bengali</option>
+                    <option>Tamil</option>
+                </select>
+                <div class="social">
+                    <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://twitter.com/login"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-om">
+                <span aria-hidden="true">ॐ</span>
+                <p>May all beings be happy and free.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Sanatan Dharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="festival-popup" role="dialog" aria-live="polite">
+        <div>
+            <h3>Upcoming Festival: Kartik Purnima</h3>
+            <p>Join the live Ganga aarti and community satsang this weekend.</p>
+        </div>
+        <button class="btn outline close-popup" type="button">Remind Me Later</button>
+    </div>
+
+    <script src="./js/main.js"></script>
+  
+</body>
+</html>

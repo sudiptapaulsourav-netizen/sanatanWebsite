@@ -1,0 +1,982 @@
+:root {
+    --bg: #fdf7ef;
+    --bg-alt: #ffffff;
+    --text: #3a1f0f;
+    --muted: #6d4c3f;
+    --accent: #d97706;
+    --accent-dark: #8a3b12;
+    --border: rgba(60, 30, 10, 0.12);
+    --shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Dark Mode Variables */
+.theme-dark {
+    --bg: #0a0f1f;            /* Dark background */
+    --bg-alt: #0f172a;        /* Slightly lighter dark background */
+    --text: #f7c873;          /* Light yellow text color for readability */
+    --muted: #f3d7a3;         /* Muted text for secondary information */
+    --accent: #f59e0b;        /* Brighter gold accent color */
+    --accent-dark: #d97706;   /* Darker gold shade for hover */
+    --border: rgba(255, 215, 128, 0.25); /* Border color for contrast */
+    --shadow: 0 18px 40px rgba(0, 0, 0, 0.45); /* Shadow for depth */
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Merriweather", serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1rem 4vw;
+    background: rgba(245, 158, 11, 0.92);
+    backdrop-filter: blur(8px);
+    box-shadow: var(--shadow);
+}
+
+.theme-dark .site-header {
+    background: rgba(15, 23, 42, 0.95);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.brand-icon {
+    font-size: 2.4rem; /* Adjust font size if necessary */
+    padding: 0.4rem 0.8rem;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the logo */
+}
+
+.brand-icon img {
+    height: 50px; /* Adjust this value to control the height of the logo */
+    width: 70px;  /* Automatically adjusts the width to maintain the aspect ratio */
+    max-width: 150%; /* Ensures the image doesn't exceed the container size */
+}
+
+
+.brand-title {
+    font-family: "Noto Serif Devanagari", serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.brand-subtitle {
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.4rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.nav-links a {
+    padding: 0.3rem 0;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover {
+    border-color: var(--accent-dark);
+    color: var(--accent-dark);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-alt);
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--border);
+}
+
+.search input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 180px;
+    color: var(--text);
+}
+
+.search input:focus {
+    border: 1px solid var(--accent);
+}
+
+/* Default theme (light mode) */
+.theme-toggle {
+    border: 1px solid var(--border);
+    background: var(--bg-alt); /* Light mode background */
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text); /* Ensure text is visible on light mode */
+}
+
+.theme-toggle:hover {
+    background: var(--accent); /* Accent color on hover */
+    color: var(--bg-alt); /* Change text color on hover */
+}
+
+/* Dark theme adjustments */
+.theme-dark .theme-toggle {
+    background: var(--bg-alt); /* Dark mode background */
+    border: 1px solid var(--border); /* Dark mode border */
+    color: var(--text); /* Text color for dark mode */
+}
+
+.theme-dark .theme-toggle:hover {
+    background: var(--accent-dark); /* Accent color on hover in dark mode */
+    color: var(--bg-alt); /* Change text color on hover in dark mode */
+}
+
+/* Optional: Styling for when the button is toggled on (active state) */
+.theme-toggle.active {
+    background: var(--accent-dark); /* Active state background color */
+    color: #fff; /* White text for active button */
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+      color: var(--text);  /* Set the color here, for example, using a dark text color */
+}
+.hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 8vw;
+    color: #fff;
+    overflow: hidden;
+}
+
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire hero section */
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(10, 15, 31, 0.8), rgba(120, 53, 15, 0.4));
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    max-width: 680px;
+    z-index: 1;
+    padding: 0 2rem; /* Add padding for smaller screens */
+}
+
+.hero-kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    color: #fcd34d;
+}
+
+.hero h1 {
+    font-family: "Noto Serif Devanagari", serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.6rem);
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.hero-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.2rem;
+}
+
+.hero-highlights div {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.hero-highlights h3 {
+    font-size: 1.6rem;
+}
+
+section {
+    padding: 4.5rem 8vw;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 3rem;
+}
+
+.section-heading h2 {
+    font-family: "Noto Serif Devanagari", serif;
+    font-size: clamp(1.9rem, 2.8vw, 2.8rem);
+    margin-bottom: 0.6rem;
+}
+
+.section-heading p {
+    color: var(--muted);
+}
+
+
+/* General Section Styles */
+.section {
+    padding: 4.5rem 8vw;
+    background-color: var(--bg);
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 3rem;
+}
+
+.section-heading h2 {
+    font-family: "Noto Serif Devanagari", serif;
+    font-size: clamp(1.9rem, 2.8vw, 2.8rem);
+    margin-bottom: 0.6rem;
+    color: var(--text);
+}
+
+.section-heading p {
+    color: var(--muted);
+}
+
+/* Section Header for Carousel */
+.section-header h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--text);
+}
+
+.section-header p {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--muted);
+}
+
+/* Carousel Styles */
+.carousel-block {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.carousel {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-card {
+    min-width: 300px;
+    margin-right: 20px;
+    text-align: center;
+    background-color: var(--bg-alt); /* Dark mode background for carousel cards */
+    color: var(--text); /* Dark mode text color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow); /* Applying shadow from dark mode variable */
+}
+
+.carousel-card i {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.2);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+.carousel-btn i {
+    color: var(--text); /* Button icon color */
+    font-size: 2rem;
+}
+
+/* About Content Section */
+.about-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+.about-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+.about-content p {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.list li {
+    font-size: 1rem;
+    color: var(--muted); /* Muted color for list items */
+    margin-bottom: 10px;
+}
+.puja-grid,
+.temple-grid,
+.books-grid,
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.puja-card,
+.book-card,
+.news-card,
+.guide-card {
+    background: var(--bg-alt);
+    padding: 2rem;
+    border-radius: 1.4rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.puja-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+/* Puja Card Image */
+.puja-card img.puja-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+
+.tag {
+    background: rgba(217, 119, 6, 0.12);
+    color: var(--accent-dark);
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+}
+
+.materials,
+.steps {
+    margin-bottom: 1.3rem;
+    padding-left: 1.2rem;
+}
+
+.materials li,
+.steps li {
+    margin-bottom: 0.4rem;
+}
+
+.materials i {
+    color: var(--accent);
+    margin-right: 0.4rem;
+}
+
+.puja-actions,
+.puja-meta,
+.book-actions,
+.news-actions,
+.temple-actions,
+.contact-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    align-items: center;
+}
+
+.puja-meta {
+    margin-top: 1rem;
+    justify-content: space-between;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    border-radius: 999px;
+    padding: 0.5rem 1.2rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.btn.primary {
+    background: var(--accent);
+    color: #fff;
+}
+
+.btn.ghost {
+    background: transparent;
+    color: var(--accent-dark);
+    border-color: var(--accent-dark);
+}
+
+.btn.outline {
+    background: var(--bg-alt);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+.temple-card {
+    background: var(--bg-alt);
+    border-radius: 1.4rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.temple-card img {
+    height: 190px;
+    object-fit: cover;
+}
+
+.temple-card__content {
+    padding: 1.6rem;
+}
+
+.temple-meta {
+    margin-top: 1rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.pilgrimage-guides {
+    margin-top: 3rem;
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.1), rgba(234, 179, 8, 0.05));
+    padding: 2rem;
+    border-radius: 1.4rem;
+    border: 1px solid var(--border);
+}
+
+.guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+}
+
+.book-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1rem;
+}
+
+.rating {
+    color: var(--accent-dark);
+}
+
+.book-comments {
+    margin-top: 1.4rem;
+    background: rgba(217, 119, 6, 0.1);
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.news-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.news-card img {
+    height: 180px;
+    object-fit: cover;
+}
+
+.news-content {
+    padding: 1.6rem;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+}
+
+.calendar-day {
+    padding: 1.2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border);
+    background: var(--bg-alt);
+    box-shadow: var(--shadow);
+}
+
+.calendar-day.highlight {
+    border-color: var(--accent);
+    background: rgba(245, 158, 11, 0.15);
+}
+
+/* Contact Section */
+.contact {
+    background-color: var(--bg); /* Dark background */
+    padding: 4rem 20px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-heading h2 {
+    font-size: 2.2rem;
+    color: var(--text); /* Light text */
+    margin-bottom: 10px;
+}
+
+.section-heading p {
+    font-size: 1rem;
+    color: var(--muted); /* Muted text for description */
+}
+
+/* Contact Grid */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Responsive columns */
+    gap: 2.9rem;
+}
+
+/* Contact Info */
+.contact-info {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Contact CTA */
+.contact-cta {
+    background-color: var(--bg-alt); /* Dark background for CTA */
+    padding: 25px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin-top: 30px;
+}
+
+.contact-cta .btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-cta .btn.primary {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+}
+
+.contact-cta .btn.primary:hover {
+    background-color: var(--accent-dark);
+    transform: translateY(-3px);
+}
+
+.contact-cta .btn.ghost {
+    background-color: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+.contact-cta .btn.ghost:hover {
+    background-color: var(--accent-dark);
+    color: white;
+}
+
+/* Contact Form */
+.contact-form {
+    display: grid;
+    gap: 1.8rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 0.8rem 1rem;
+    border-radius: 0.8rem;
+    border: 1px solid var(--border);
+    background-color: var(--bg-alt);
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--muted);
+}
+
+.contact-form button {
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    color: white;
+    background-color: var(--accent);
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-form button:hover {
+    background-color: var(--accent-dark);
+    transform: translateY(-3px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .contact-cta {
+        margin-top: 20px;
+        padding: 20px;
+    }
+}
+
+
+.site-footer {
+    background: var(--accent-dark);
+    color: #fff7ed;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+    padding: 3rem 8vw 2rem;
+}
+
+.footer-top a {
+    display: block;
+    margin-top: 0.5rem;
+    color: #fff7ed;
+}
+
+.footer-top select {
+    margin-top: 0.6rem;
+    padding: 0.5rem;
+    border-radius: 0.6rem;
+    border: none;
+}
+
+.footer-om {
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.social {
+    margin-top: 0.8rem;
+    display: flex;
+    gap: 0.8rem;
+}
+
+.festival-popup {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: var(--bg-alt);
+    color: var(--text);
+    border-radius: 1.2rem;
+    padding: 0.5rem 1rem; /* Reduced padding for smaller size */
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    display: flex;
+    gap: 0.5rem; /* Reduced gap between elements */
+    align-items: center;
+    font-size: 0.9rem; /* Smaller text size */
+    width: auto; /* You can specify a smaller width if needed, for example: width: 180px; */
+}
+
+
+.festival-popup.hidden {
+    display: none;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 1024px) {
+    /* Site header adjustment for smaller screens */
+    .site-header {
+        flex-wrap: wrap;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    /* Hero section adjustments */
+    .hero {
+        padding: 5rem 6vw;
+    }
+
+    /* Hero highlights grid */
+    .hero-highlights {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    /* Search input width adjustment */
+    .search input {
+        width: 130px;
+    }
+
+    /* Mobile festival popup adjustments */
+    .festival-popup {
+        left: 1rem;
+        right: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Mobile navigation menu toggle */
+    .menu-toggle {
+        display: inline-flex;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: var(--bg-alt);
+        padding: 1rem;
+        border-radius: 1rem;
+        border: 1px solid var(--border);
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Hero section mobile adjustments */
+    .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Adjustments for grids on mobile */
+    .hero-highlights {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    /* Mobile footer adjustments */
+    .footer-top {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-top select {
+        margin-top: 0.6rem;
+        padding: 0.5rem;
+        border-radius: 0.6rem;
+        border: none;
+    }
+
+    /* Contact form input adjustments */
+    .contact-form input,
+    .contact-form textarea {
+        padding: 0.8rem 1rem;
+        border-radius: 0.8rem;
+        border: 1px solid var(--border);
+        background: var(--bg-alt);
+    }
+
+    /* Calendar grid for mobile */
+    .calendar-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}
+
+/* Mobile-friendly font size adjustments */
+@media (max-width: 400px) {
+    body {
+        font-size: 14px; /* Adjust font size for smaller devices */
+    }
+
+    .hero h1 {
+        font-size: 2.2rem; /* Make the hero heading smaller */
+    }
+
+    .section-heading h2 {
+        font-size: 1.8rem; /* Adjust heading size */
+    }
+}
+
+.calendar {
+  display: grid;
+  gap: 2rem;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.6rem;
+}
+
+.day-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.date {
+  padding: 0.8rem;
+  text-align: center;
+  border-radius: 12px;
+  background: var(--surface-alt);
+}
+
+.date.muted {
+  opacity: 0.4;
+}
+
+.date.highlight {
+  background: rgba(209, 123, 42, 0.25);
+  border: 1px solid var(--primary);
+}
+
+.date.upcoming {
+  background: rgba(122, 46, 33, 0.2);
+  border: 1px solid var(--accent);
+}
+
+.calendar-events {
+  display: grid;
+  gap: 1rem;
+}
+
+.event-card {
+  border: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.event-card.highlight {
+  background: rgba(209, 123, 42, 0.15);
+}
